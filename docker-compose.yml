@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+
+  skeleton-flask-api:
+    build: 
+      context: ./skeleton-flask-api
+    restart: always
+    environment:
+      VARIABLE1: ${VARIABLE1}
+      VARIABLE2: ${VARIABLE2}
+    ports:
+      - 5000:5000
+    volumes:
+        - ./skeleton-flask-api:/app 

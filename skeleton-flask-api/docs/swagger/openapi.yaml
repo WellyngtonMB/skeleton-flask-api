@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: API skeleton-flask-api
+  description: API skeleton-flask-api.
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:5000/api/v1
+    description: Local server
+tags:
+  - name: Hello
+    description: Operações relativas a hello.
+paths:
+#Auth
+  /hello:
+    get:
+      tags: 
+        - Hello
+      summary: Hello World
+      description: Retorna hello world.
+      responses:
+        '200':
+          $ref: '#/components/responses/HelloWorld'
+        '400':
+          description: Erro 400.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGenerico'
+        '500':
+          description: Erro 500.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGenerico'
+components:
+
+  responses:
+    HelloWorld:
+      description: Response hello world.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              hello:
+                description: Hello World.
+                type: string
+                example: wolrd
+
+  schemas:
+    #Responses  
+    ResponseGenerico:
+      type: object
+      properties:
+        msg:
+          type: string
+    PostResponseGenerico:
+      type: object
+      properties:
+        id:
+          type: string
+        msg:
+          type: string
